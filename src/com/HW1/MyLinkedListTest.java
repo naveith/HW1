@@ -4,7 +4,7 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 
 public class MyLinkedListTest extends TestCase {
-    
+
     public void testNextPass() throws Exception {
         ILinkedList<Integer> list = new MyLinkedList<>();
         ILinkedList<Integer> expected = null;
