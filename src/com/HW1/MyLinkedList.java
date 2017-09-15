@@ -18,8 +18,9 @@ public class MyLinkedList<T> implements ILinkedList<T> {
      * @return the node at the end of the list
      */
     public ILinkedList<T> last(){
-        while (next != null) {
-            temp = next;
+        temp = next;
+        while (temp.next() != null) {
+            temp = temp.next();
         }
         return temp;
     }
@@ -30,8 +31,9 @@ public class MyLinkedList<T> implements ILinkedList<T> {
      * @return the element n away
      */
     public ILinkedList<T> after(int n){
-        for(int i = 0; i < n; i++) {
-            temp = next;
+        temp = next;
+        for(int i = 0; i < n-1; i++) {
+            temp = temp.next();
         }
         return temp;
     }
@@ -74,7 +76,7 @@ public class MyLinkedList<T> implements ILinkedList<T> {
      * @param next the next element
      */
     public void append(ILinkedList<T> next){
-        last().setNext(next);
+        next.setNext(last());
     }
 
     /**
