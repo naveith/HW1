@@ -76,7 +76,7 @@ public class MyLinkedList<T> implements ILinkedList<T> {
      * @param next the next element
      */
     public void append(ILinkedList<T> next){
-        next.setNext(last());
+        next.last().setNext(next);
     }
 
     /**

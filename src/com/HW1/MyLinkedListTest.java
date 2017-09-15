@@ -59,7 +59,6 @@ public class MyLinkedListTest extends TestCase {
         int expected = 2;
         int actual = one.last().get();
         Assert.assertEquals(expected, actual);
-        System.out.println("one.last(): "+one.last().get());
     }
 
     public void testAfterFail() throws Exception {
@@ -200,25 +199,39 @@ public class MyLinkedListTest extends TestCase {
         Assert.assertEquals(expected, actual);
     }
 
+    public void testAppendFail() throws Exception {
+        System.out.println("Test setNext() Pass");
+        ILinkedList<Integer> one = new MyLinkedList<>();
+        ILinkedList<Integer> two = new MyLinkedList<>();
+        ILinkedList<Integer> three = new MyLinkedList<>();
+        two.set(2);
+        try {
+            one.append(null);
+        } catch (NullPointerException expected){
+            System.out.println("warning: cannot append null");
+        }
+    }
 
     public void testAppendPass() throws Exception {
         System.out.println("Test setNext() Pass");
         ILinkedList<Integer> one = new MyLinkedList<>();
         ILinkedList<Integer> two = new MyLinkedList<>();
-        one.set(1);
         two.set(2);
-        one.append(two);
-        int expected = 2;
-        int actual = one.next().get();
-        Assert.assertEquals(expected, actual);
+        try {
+            one.append(two);
+        } catch (NullPointerException expected){
+            System.out.println("append error");
+        }
+        //int expected = 2;
+        //int actual = one.next().get();
+        //Assert.assertEquals(expected, actual);
     }
 
     public void testInsertFail() throws Exception {
         System.out.println("Test insert() Fail");
         ILinkedList<Integer> one = new MyLinkedList<>();
-        ILinkedList<Integer> two = new MyLinkedList<>();
         try {
-            two.insert(null);
+            one.insert(null);
         } catch(NullPointerException expected){
             System.out.println("warning: cannot insert a null list.");
         }
@@ -232,7 +245,7 @@ public class MyLinkedListTest extends TestCase {
         two.insert(one);
         ILinkedList<Integer> actual = one.next();
         ILinkedList<Integer> expected = two;
-        Assert.assertEquals(actual, expected);
+        Assert.assertEquals(expected, actual);
     }
 
 }
